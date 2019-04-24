@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Running text</title>
+  <!-- script start -->
+  <script type="text/javascript">
+
+    // text value to display in document:
+    let txt = "The roots of education are bitter, but the fruits is sweets. Aristotle <br>";
+      txt += "An investment in knowledge always pays the best interest. Benjamin Franklin <br>";
+      txt += "Formal education will make you a living. Self-education will make you a fortune. Jim Rohn <br>";
+      txt += "Poverty is the parent of revolution and crime. Aristotle <br>";
+      txt += "All that is necessary for the triumph of evil is for good men to do nothing. Edmund Burke <br>";
+      txt +="The limits of my language mean the limits of my world. Ludwig Wittgenstein <br>";
+      
+      // text length (in characters): 
+      let n = 0;
+      
+      // variable for writing the link to the region object to whith the text is displayed:
+      let ref;
+
+    // function that is called when displaying text:
+    function writeText() {
+
+      // variable to write time delay value:
+      let time;
+
+      // text adjustment is writen to the output area:
+      ref.innerHTML = txt.substring(0, n);
+
+      // if not reached the end of the text:
+      if (n < txt.length) {
+
+        // the length of the displayed substring is increased by one character:
+        n++;
+
+        // delay befor calling a function (in milliseconds):
+        time = 200;
+      }
+
+      // if the end of the text is reached:
+      else {
+
+        // the initial value for the length of the substring displayed in the output area:
+        n = 0;
+
+        // delay befor calling a function (in milliseconds):
+        time = 4000;
+      }
+
+      // recursive function call with time delay:
+      setTimeout(writeText, time);
+    }
+
+    // event handler for loading a document:
+    window.onload = function() {
+
+      // link to output area object:
+      ref = document.getElementById("mytext");
+
+      // call the text display function:
+      writeText();
+    }
+  </script>
+  <!-- finish script -->
+  
+  <!-- style description for output area -->
+  <style type="text/css">
+    #mytext {
+      height: 150px;
+      width: 80%;
+      border: solid;
+      border-color: silver;
+      border-width: 3px;
+      font-family: Times New Roman;
+      font-size: 16pt;
+      padding: 10px;
+    }
+  </style>
+  <!-- style description finish -->
+</head>
+
+<body>
+  <h3>Running Text</h3>
+  
+  <!-- output area -->
+  <div id="mytext"></div>
+</body>
+</html>
